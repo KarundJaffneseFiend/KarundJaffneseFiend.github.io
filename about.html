@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About – NAMES4U</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --fg: #eaeaea;
+      --accent: #7ec8e3;
+      --hover: #00bfff;
+      --gray: #1a1a1a;
+      --transition: 0.3s ease;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: 'Inter', sans-serif;
+    }
+    header {
+      position: fixed; 
+      top: 0;
+      left: 0;
+      right: 0;
+      padding: 1rem 2rem; 
+      display: flex;
+      justify-content: space-between; 
+      align-items: center;
+      background: rgba(10,10,10,0.9);
+      backdrop-filter: blur(6px);
+      z-index: 1000; 
+    }
+    .logo {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.5rem;
+      color: var(--accent);
+      text-decoration: none; 
+    }
+    nav {
+      display: flex;
+      gap: 1.5rem;
+    }
+    nav a {
+      color: var(--fg);
+      text-decoration: none;
+      font-weight: 400; 
+      padding: 0.5rem 1rem; 
+      border-radius: 5px; 
+      transition: background var(--transition), color var(--transition); 
+    }
+    nav a:hover {
+      background: var(--accent); 
+      color: var(--bg); 
+    }
+    main {
+      max-width: 800px;
+      margin: auto;
+      padding: 100px 2rem 2rem; 
+    }
+    h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: var(--accent);
+    }
+    p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+      color: #ccc;
+    }
+    .highlight {
+      color: var(--hover);
+      font-weight: bold;
+    }
+    .portrait {
+      width: 180px;
+      border-radius: 10px;
+      margin: 1rem 0 2rem;
+      box-shadow: 0 0 20px rgba(126, 200, 227, 0.3);
+    }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+</head>
+<body>
+  <header>
+    <a href="index.html" class="logo">NAMES4U</a> <nav>
+      <a href="index.html">Home</a>
+      <a href="explore.html">Explore</a>
+      <a href="search.html">Search</a>
+      <a href="Daily.html">Daily Feed</a>
+      <a href="About.html">About</a>
+    </nav>
+  </header>
+  <main>
+    <h1>About Me</h1>
+    <img src="Karun.jpg" alt="Portrait of Karunniyan Sritharan" class="portrait">
+    <p>Hi! I'm <span class="highlight">Karunniyan Sritharan</span>, I'm currently a Multimedia student at NSBM.</p>
+    <p>As a lifelong <span class="highlight">etymology enthusiast</span>, I’ve always been fascinated by how names carry stories—cultural, historical, personal. My curiosity spans across different languages, regions, and naming traditions, and I created <span class="highlight">NAMES4U</span> as a platform to explore and share this world with others & create an even bigger database for likeminded people.</p>
+    <h1>About This Website</h1>
+    <p><span class="highlight">NAMES4U</span> is more than a design project—it's a curated experience that brings naming traditions to life through a more modern, and accessible interface.</p>
+    <p>The purpose of this website is to make global naming customs both discoverable and enjoyable for everyone. Whether you're looking to understand your own name, researching a name from another culture, or simply exploring the rich stories that names hold, this platform is built for you.</p>
+    <p>From detailed name search results and cultural breakdowns to a daily updated feed and map-based exploration, <span class="highlight">NAMES4U</span> is a celebration of human identity through naming.</p>
+    <p>This project is a blend of my technical skills, cultural interest, and design sensibility—all driven by the joy of learning and storytelling through language.</p>
+    <section id="contact" class="contact-section" style="margin-top: 4rem; background: #111; padding: 3rem 2rem; border-radius: 16px;">
+    <h2 style="text-align: center; color: var(--accent); font-family: 'Montserrat', sans-serif; font-size: 2rem; margin-bottom: 1rem;">Get In Touch</h2>
+    <p style="text-align: center; color: #ccc; margin-bottom: 2rem; font-size: 1.1rem;">Feel free to reach out & recommend a few new names or cultures you'd like to add.</p>
+    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem;">
+      <div style="text-align: center; color: var(--fg);">
+        <i class="fas fa-phone" style="font-size: 1.5rem; color: var(--hover);"></i>
+        <h5 style="margin: 0.5rem 0;">Phone</h5>
+        <p>077 5752 166</p>
+      </div>
+      <div style="text-align: center; color: var(--fg);">
+        <i class="fas fa-envelope" style="font-size: 1.5rem; color: var(--hover);"></i>
+        <h5 style="margin: 0.5rem 0;">Email</h5>
+        <p>karunniyansritharan2048110b@email.com</p>
+      </div>
+      <div style="text-align: center; color: var(--fg);">
+        <i class="fab fa-linkedin" style="font-size: 1.5rem; color: var(--hover);"></i>
+        <h5 style="margin: 0.5rem 0;">LinkedIn</h5>
+        <p><a href="https://linkedin.com" target="_blank" style="color: var(--accent); text-decoration: none;">linkedin.com/in/karunniyan</a></p>
+      </div>
+    </div>
+  </section>
+</main>
+</body>
+</html>
+
