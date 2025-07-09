@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NAMES4U – Explore Naming Traditions</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --text: #eaeaea;
+      --accent: #7ec8e3;
+      --hover: #00bfff;
+      --gray: #1a1a1a;
+      --transition: 0.3s ease;
+      --font-heading: 'Montserrat', sans-serif;
+      --font-body: 'Inter', sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+    }
+    header {
+      position: sticky;
+      top: 0;
+      left: 0;
+      right: 0;
+      padding: 1rem 2rem; 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center; 
+      background-color: rgba(10,10,10,0.8);
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid var(--gray);
+      z-index: 10;
+    }
+    .logo { 
+      font-family: var(--font-heading);
+      font-size: 1.5rem; 
+      color: var(--accent);
+      text-decoration: none;
+    }
+    nav {
+      display: flex;
+      gap: 1.5rem; 
+    }
+    nav a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 400; 
+      padding: 0.5rem 1rem; 
+      border-radius: 5px; 
+      transition: background var(--transition), color var(--transition); 
+    }
+    nav a:hover {
+      background: var(--accent); 
+      color: var(--bg); 
+    }
+    .tagline-container {
+      text-align: center;
+      padding: 2rem 1rem 1rem; 
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .tagline {
+      font-style: italic;
+      opacity: 0.7;
+      margin-bottom: 1.5rem; 
+      font-size: 1.1rem;
+    }
+    .search-container {
+      max-width: 500px;
+      margin: 0 auto 3rem auto;
+      position: relative;
+    }
+    .search-container input {
+      width: 100%;
+      padding: 1rem 1.5rem;
+      border: 2px solid var(--accent);
+      border-radius: 40px;
+      background-color: transparent;
+      color: var(--text);
+      font-size: 1rem;
+    }
+    main {
+      padding: 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .section-title {
+      font-family: var(--font-heading);
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      color: var(--accent);
+      text-align: center;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+    }
+    .card {
+      background: var(--gray);
+      padding: 1.5rem;
+      border-radius: 16px;
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    }
+    .card h2 {
+      font-family: var(--font-heading);
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+    .card p {
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+      color: #ccc;
+    }
+    .card a {
+      font-weight: bold;
+      color: var(--hover);
+      text-decoration: none;
+    }
+    .card a:hover {
+      text-decoration: underline;
+    }
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.9rem;
+      border-top: 1px solid var(--gray);
+      margin-top: 4rem;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="index.html" class="logo">NAMES4U</a>
+    <nav>
+	  <a href="index.html">Home</a>
+      <a href="explore.html">Explore</a>
+      <a href="search.html">Search</a>
+      <a href="daily.html">Daily Feed</a>
+      <a href="about.html">About</a>
+    </nav>
+  </header>
+
+  <div class="tagline-container">
+    <h1 style="font-family: var(--font-heading); font-size: 2.8rem; margin-bottom: 0.5rem; color: var(--accent);">Explore</h1>
+    <div class="search-container">
+      <input type="search" placeholder="Search a country, region, or name…" aria-label="Search" id="searchInput">
+    </div>
+  </div>
+
+  <main>
+    <div class="section-title">Explore Naming Traditions by Region & Ethnicity</div>
+    <div class="grid" id="cardGrid">
+      <div class="card"><h2>Yoruba (Nigeria)</h2><p>Personal + family name. Reflects family events and heritage.</p><a href="https://en.wikipedia.org/wiki/Yoruba_names" target="_blank">Learn more →</a></div>
+      <div class="card"><h2>Igbo (Nigeria)</h2><p>Given + surname; often reflects birth or religion.</p><a href="https://en.wikipedia.org/wiki/Igbo_name" target="_blank">Learn more →</a></div>
+      <div class="card"><h2>Hausa (Nigeria)</h2><p>Personal + father's + family name. Titles like "Alhaji".</p><a href="https://en.wikipedia.org/wiki/Hausa_people#Names" target="_blank">Learn more →</a></div>
+      <div class="card"><h2>Somali</h2><p>Personal + father's + grandfather's name. No surname.</p><a href="https://en.wikipedia.org/wiki/Somali_people#Names" target="_blank">Learn more →</a></div>
+      <div class="card"><h2>Greek</h2><p>Given + family or patronymic name. Gendered forms.</p><a href="https://en.wikipedia.org/wiki/Greek_name" target="_blank">Learn more →</a></div>
+      <div class="card"><h2>Russian</h2><p>Given + patronymic + surname. Gendered endings common.</p><a href="https://en.wikipedia.org/wiki/Eastern_Slavic_naming_customs" target="_blank">Learn more →</a></div>
+      <div class="card"><h2>Bulgarian</h2><p>Given + patronymic + family name. Patronymic from father.</p><a href="https://en.wikipedia.org/wiki/Bulgarian_name" target="_blank">Learn more →</a></div>
+      <div class="card"><h2>Polish</h2><p>Given + family name. Gendered surname forms.</p><a href="https://en.wikipedia.org/wiki/Polish_name" target="_blank">Learn more →</a></div>
+      <div class="card"><h2>Ukrainian</h2><p>Given + patronymic + family name. Similar to Russian system.</p><a href="https://en.wikipedia.org/wiki/Ukrainian_name" target="_blank">Learn more →</a></div>
+      <div class="card"><h2>Slovak</h2><p>Given + family name. Feminine suffix "-ová" added to surnames.</p><a href="https://en.wikipedia.org/wiki/Slovak_name" target="_blank">Learn more →</a></div>
+      <div class="card"><h2>Czech</h2><p>Given + family name. Female surnames also take "-ová".</p><a href="https://en.wikipedia.org/wiki/Czech_name" target="_blank">Learn more →</a></div>
+      <div class="card"><h2>Romanian</h2><p>Given + family name. Influenced by Latin roots.</p><a href="https://en.wikipedia.org/wiki/Romanian_name" target="_blank">Learn more →</a></div>
+      <div class="card"><h2>Arabic</h2><p>Personal + father's + grandfather's + family name. Use of 'Al-'.</p><a href="https://en.wikipedia.org/wiki/Arabic_name" target="_blank">Learn more →</a></div>
+      <div class="card"><h2>Kurdish</h2><p>Given + father's name. Surnames often dropped or politically suppressed.</p><a href="https://en.wikipedia.org/wiki/Kurdish_names" target="_blank">Learn more →</a></div>
+      <div class="card"><h2>Iranian (Persian)</h2><p>Given name + family name. Many names drawn from Persian history or poetry.</p><a href="https://en.wikipedia.org/wiki/Iranian_name" target="_blank">Learn more →</a></div>
+      <div class="card"><h2>Pakistani</h2><p>Muslim conventions: Personal + Islamic honorifics or tribal names.</p><a href="https://en.wikipedia.org/wiki/Pakistani_name" target="_blank">Learn more →</a></div>
+      <div class="card"><h2>Indian</h2><p>Structure varies: Hindu, Muslim, Sikh, and regional differences. Often uses caste, region, or patronymics.</p><a href="https://en.wikipedia.org/wiki/Indian_name" target="_blank">Learn more →</a></div>
+      <div class="card"><h2>Bangladeshi</h2><p>Given + religious honorifics. Family names vary by region.</p><a href="https://en.wikipedia.org/wiki/Bangladeshi_name" target="_blank">Learn more →</a></div>
+      <div class="card"><h2>Sri Lankan (Tamil)</h2><p>Father's name as prefix. No family surname. Example: A. Selvan.</p><a href="https://en.wikipedia.org/wiki/Tamil_names" target="_blank">Learn more →</a></div>
+      <div class="card"><h2>Sri Lankan (Sinhalese)</h2><p>Ge/clan name + personal name. Surname sometimes omitted.</p><a href="https://en.wikipedia.org/wiki/Sinhalese_names" target="_blank">Learn more →</a></div>
+      <div class="card"><h2>Chinese</h2><p>Family name first, then given name. Often 1-syllable surname.</p><a href="https://en.wikipedia.org/wiki/Chinese_name" target="_blank">Learn more →</a></div>
+      <div class="card"><h2>Korean</h2><p>Family name first, then two-syllable given name. Few surnames are common.</p><a href="https://en.wikipedia.org/wiki/Korean_name" target="_blank">Learn more →</a></div>
+      <div class="card"><h2>Thai</h2><p>Given + long family name. Nicknames used daily.</p><a href="https://en.wikipedia.org/wiki/Thai_name" target="_blank">Learn more →</a></div>
+      <div class="card"><h2>Vietnamese</h2><p>Family + middle + given name. Names often gender-neutral.</p><a href="https://en.wikipedia.org/wiki/Vietnamese_name" target="_blank">Learn more →</a></div>
+      <div class="card"><h2>Brazilian</h2><p>Given name + father's + mother's surname. Portuguese influence.</p><a href="https://en.wikipedia.org/wiki/Brazilian_name" target="_blank">Learn more →</a></div>
+      <div class="card"><h2>Colombian</h2><p>Spanish tradition: Given + paternal + maternal surname.</p><a href="https://en.wikipedia.org/wiki/Spanish_naming_customs" target="_blank">Learn more →</a></div>
+      <div class="card"><h2>Hungarian</h2><p>Family name comes first, followed by given name. Middle names are rare.</p><a href="https://en.wikipedia.org/wiki/Hungarian_names" target="_blank">Learn more →</a></div>
+      <div class="card"><h2>Latvian</h2><p>Given + surname. Surnames have gendered suffixes (-s for men, -a for women).</p><a href="https://en.wikipedia.org/wiki/Latvian_name" target="_blank">Learn more →</a></div>
+      <div class="card"><h2>Lithuanian</h2><p>Given + family name. Female surnames vary by marital status (e.g., -aitė, -ienė).</p><a href="https://en.wikipedia.org/wiki/Lithuanian_name" target="_blank">Learn more →</a></div>
+      <div class="card"><h2>Turkish</h2><p>Given + family name. Surname Law implemented in 1934 to introduce fixed surnames.</p><a href="https://en.wikipedia.org/wiki/Turkish_name" target="_blank">Learn more →</a></div>
+      <div class="card"><h2>Ukrainian</h2><p>Given + patronymic + surname. Gendered endings common (-ko, -ska, -enko).</p><a href="https://en.wikipedia.org/wiki/Ukrainian_name" target="_blank">Learn more →</a></div>
+      <div class="card"><h2>Albanian</h2><p>Given + family name. Often uses Islamic, Christian, or native roots. Patriarchal structure.</p><a href="https://en.wikipedia.org/wiki/Albanian_name" target="_blank">Learn more →</a></div>
+      <div class="card"><h2>South Slavs (Slovenia, Croatia, Serbia, Bosnia)</h2><p>Given + patronymic-style or family name. Surnames often end with -ić. Muslim Bosniaks may have Arabic roots.</p><a href="https://en.wikipedia.org/wiki/Slavic_names" target="_blank">Learn more →</a></div>
+      <div class="card"><h2>Afghan</h2><p>Names often consist of personal name + tribal or Islamic element. No fixed surname system. Women retain names after marriage.</p><a href="https://en.wikipedia.org/wiki/Afghan_name" target="_blank">Learn more →</a></div>
+    </div>
+  </main>
+	  <footer>&copy; 2025 NAMES4U </footer>
+  <script>
+    const searchInput = document.getElementById('searchInput');
+    const cards = document.querySelectorAll('.card');
+    searchInput.addEventListener('input', () => {
+      const query = searchInput.value.toLowerCase();
+      cards.forEach(card => {
+        const title = card.querySelector('h2').textContent.toLowerCase();
+        card.style.display = title.includes(query) ? 'block' : 'none';
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NAMES4U – Name Search</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --fg: #eaeaea;
+      --accent: #7ec8e3;
+      --hover: #00bfff;
+      --gray: #1a1a1a;
+      --transition: 0.3s ease;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--fg); font-family: 'Inter', sans-serif; }
+    header {
+      padding: 1rem 2rem; 
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(10,10,10,0.9);
+      backdrop-filter: blur(6px);
+      position: fixed; 
+      top:0;
+      left: 0;
+      right: 0;
+      z-index:1000; 
+    }
+    .logo {
+      font-family:'Montserrat',sans-serif;
+      font-size:1.5rem;
+      color:var(--accent);
+      text-decoration:none; 
+    }
+    nav { display:flex; gap:1.5rem; }
+    nav a {
+      color:var(--fg);
+      text-decoration:none;
+      font-weight:400; 
+      padding:0.5rem 1rem; 
+      border-radius:5px; 
+      transition:background var(--transition), color var(--transition); 
+    }
+    nav a:hover {
+      background:var(--accent); 
+      color:var(--bg); 
+    }
+    main { max-width:800px; margin:auto; padding:100px 2rem 2rem; }
+    h1 { font-family:'Montserrat',sans-serif;font-size:2.2rem;margin-bottom:1rem;color:var(--accent);}
+    .search-box { display:flex; margin-bottom:2rem; }
+    .search-box input { flex:1; padding:1rem; border:2px solid var(--accent); border-radius:8px 0 0 8px; background:transparent; color:var(--fg);font-size:1rem; }
+    .search-box button { padding:1rem 1.5rem; border:none; background:var(--accent); color:#000; font-weight:bold; cursor:pointer; border-radius:0 8px 8px 0; transition:background var(--transition);}
+    .search-box button:hover { background:var(--hover); }
+    .result-section { background:var(--gray); padding:1.5rem; border-radius:12px; margin-bottom:2rem; }
+    .result-section h2 { font-family:'Montserrat',sans-serif;color:var(--accent);margin-bottom:0.5rem; }
+    .result-section p, .result-section ul { color:#ccc; margin-bottom:1rem; line-height:1.6; }
+    .result-section ul { list-style:disc inside; }
+    .notable-list li { margin-bottom:0.5rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="index.html" class="logo">NAMES4U</a> <nav>
+      <a href="index.html">Home</a>
+      <a href="explore.html">Explore</a>
+      <a href="search.html">Search</a>
+      <a href="daily.html">Daily Feed</a>
+      <a href="about.html">About</a>
+    </nav>
+  </header>
+  <main>
+    <h1>Search for a Given Name</h1>
+    <div class="search-box">
+      <input type="text" id="nameInput" placeholder="Enter a given name (e.g., Aisha)">
+      <button onclick="searchName()">Search</button>
+    </div>
+    <div id="resultsContainer"></div>
+  </main>
+  <script>
+    async function searchName() {
+      const name = document.getElementById('nameInput').value.trim();
+      const container = document.getElementById('resultsContainer');
+      container.innerHTML = '';
+      if (!name) return;
+
+      const candidates = [
+        `${name}_(given_name)`,
+        `${name}_(name)`,
+        name
+      ];
+      let summary = null, titleUrl = '', pageTitle = '';
+      for (const candidate of candidates) {
+        const res = await fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(candidate)}`)
+          .then(r=>r.json()).catch(()=>null);
+        if (res && res.extract) {
+          summary = res;
+          titleUrl = res.content_urls.desktop.page;
+          pageTitle = candidate;
+          break;
+        }
+      }
+      if (!summary) {
+        container.innerHTML = '<p>No "Given name" article found for that name.</p>';
+        return;
+      }
+      container.innerHTML += `<div class="result-section"><h2>Description</h2><p>${summary.extract}</p></div>`;
+      const html = await fetch(`https://api.allorigins.win/raw?url=https://en.wikipedia.org/wiki/${encodeURIComponent(pageTitle)}`)
+        .then(r=>r.text()).catch(()=>null);
+      if (html) {
+        const origMatch = html.match(/<span[^>]*lang="[^"]+"[^>]*>([^<]+)<\/span>/);
+        if (origMatch) container.innerHTML += `<div class="result-section"><h2>Name in Original Script</h2><p>${origMatch[1]}</p></div>`;
+      }
+      const originMatch = summary.extract.match(/from ([^\.]+)\./i);
+      if (originMatch) container.innerHTML += `<div class="result-section"><h2>Origin</h2><p>${originMatch[0]}</p></div>`;
+      const meaningMatch = summary.extract.match(/means? "([^"]+)"/i);
+      if (meaningMatch) container.innerHTML += `<div class="result-section"><h2>Meaning</h2><p>${meaningMatch[0]}</p></div>`;
+      if (html) {
+        let m = html.match(/<span class="mw-headline" id="Notable_people">Notable people[\s\S]*?<ul>([\s\S]*?)<\/ul>/);
+        if (!m) m = html.match(/<span class="mw-headline" id="People_with_the_name">People with the name[\s\S]*?<ul>([\s\S]*?)<\/ul>/);
+        if (m) {
+          const items = Array.from(m[1].matchAll(/<li>([\s\S]*?)<\/li>/g));
+          let list = '<ul class="notable-list">';
+          items.slice(0,5).forEach(match => list += `<li>${match[1].replace(/<[^>]+>/g,'')}</li>`);
+          list += '</ul>';
+          container.innerHTML += `<div class="result-section"><h2>Famous People</h2>${list}</div>`;
+        }
+      }
+      container.innerHTML += `<div class="result-section"><h2>Learn More</h2><p><a href="${titleUrl}" target="_blank" style="color:var(--hover);text-decoration:underline;">${titleUrl}</a></p></div>`;
+    }
+  </script>
+	  <footer>&copy; 2025 NAMES4U </footer>
+</body>
+</html>
